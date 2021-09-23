@@ -7,6 +7,7 @@ C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\Pages\In
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\Pages\ModelsPage.g.cs
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\Pages\ProcessPage.g.cs
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\App.g.cs
+C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient_MarkupCompile.cache
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient_MarkupCompile.lref
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\MainWindow.baml
@@ -20,4 +21,3 @@ C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClie
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.csproj.CoreCompileInputs.cache
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.exe
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.pdb
-C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.csproj.AssemblyReference.cache

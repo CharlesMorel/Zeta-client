@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Constants\AppConstants.cs" />
     <Compile Include="Entities\AbstractEntity.cs" />
+    <Compile Include="Entities\Enums\RangeType.cs" />
     <Compile Include="Entities\FrisbeeModel.cs" />
     <Compile Include="Entities\Ingredient.cs" />
     <Compile Include="Entities\ModelIngredient.cs" />
