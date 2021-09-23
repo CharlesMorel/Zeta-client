@@ -1,0 +1,31 @@
+﻿<Page x:Class="ZetaClient.pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZetaClient.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HomePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Accueil" HorizontalAlignment="Center" FontSize="18" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" x:Name="Process" Padding="8, 4" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Process_Click">Processus</Button>
+            <Button Grid.Column="1" x:Name="Models" Padding="8, 4" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Models_Click">Modèles</Button>
+            <Button Grid.Column="2" x:Name="Ingredients" Padding="8, 4" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Ingredients_Click">Ingrédients</Button>
+        </Grid>
+    </Grid>
+</Page>
