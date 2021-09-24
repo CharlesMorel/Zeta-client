@@ -159,7 +159,7 @@
                             <TextBox x:Name="ModifypUHTInput" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
                             <Label Grid.Row="3" Content="Gamme" />
                             <ListBox x:Name="ModifyRangeInput" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Source={StaticResource RangeTypeValues}}" Height="80" Margin="0,0,0,10" Padding="4" />
-                            <Button x:Name="ModifyValidationButton" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Padding="8, 4" Click="ModifyValidationButton_Click">Modifier</Button>
+                            <Button x:Name="ModifyValidationButton" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Padding="8, 4" Click="ModifyValidationButton_Click">Modifier</Button>
                         </Grid>
                     </Grid>
                 </Border>

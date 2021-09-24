@@ -31,7 +31,6 @@ namespace ZetaClient.pages
         private void ProcessPage_Loaded(object sender, EventArgs e)
         {
             ModelInput.ItemsSource = LoadFrisbeeModelCollection();
-            //ModelInput.SelectedItem = ...
             ProcessDataGrid.ItemsSource = LoadProcessCollection();
         }
 
@@ -39,7 +38,16 @@ namespace ZetaClient.pages
         {
             return new List<Process>()
             {
-
+                new Process()
+                {
+                    Name = "truc",
+                    Description = "truc",
+                    StepDescription = "truc",
+                    FrisbeeModel = new FrisbeeModel()
+                    {
+                        Name = "trtrtr"
+                    }
+                }
             };
         }
 
@@ -53,7 +61,13 @@ namespace ZetaClient.pages
 
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
-            //todo
+            Process process = ((FrameworkElement)sender).DataContext as Process;
+            ModifyNameInput.Text = process.Name;
+            ModifyDescriptionInput.Text = process.Description;
+            ModifyStepDescriptionInput.Text = process.StepDescription;
+            ModifyModelInput.ItemsSource = LoadFrisbeeModelCollection();
+            ModifyModelInput.SelectedItem = process.FrisbeeModel;
+            ModifyPopup.IsOpen = true;
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
@@ -64,6 +78,17 @@ namespace ZetaClient.pages
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             //todo
+        }
+
+        private void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
+        {
+            // do something
+            ModifyPopup.IsOpen = false;
+        }
+
+        private void CloseModifyPopupButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ModifyPopup.IsOpen = false;
         }
     }
 }
