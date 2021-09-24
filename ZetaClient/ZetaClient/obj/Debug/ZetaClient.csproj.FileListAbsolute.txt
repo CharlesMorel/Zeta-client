@@ -21,3 +21,4 @@ C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClie
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.csproj.CoreCompileInputs.cache
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.exe
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.pdb
+C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.csproj.AssemblyReference.cache

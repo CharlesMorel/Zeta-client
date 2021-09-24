@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using ZetaClient.Constants;
+using ZetaClient.DataAccess;
 using ZetaClient.Entities;
 
 namespace ZetaClient
@@ -18,6 +19,8 @@ namespace ZetaClient
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            // todo: retrieve BaseApiUrl
         }
     }
 }

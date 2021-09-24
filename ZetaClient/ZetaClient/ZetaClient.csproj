@@ -71,7 +71,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Constants\AppConstants.cs" />
-    <Compile Include="Entities\AbstractEntity.cs" />
+    <Compile Include="DataAccess\Abstract\AbstractApiDao.cs" />
+    <Compile Include="DataAccess\FrisbeeModelApiDao.cs" />
+    <Compile Include="DataAccess\IngredientApiDao.cs" />
+    <Compile Include="DataAccess\ModelIngredientApiDao.cs" />
+    <Compile Include="DataAccess\ProcessApiDao.cs" />
+    <Compile Include="DataAccess\UserApiDao.cs" />
+    <Compile Include="Entities\Abstract\AbstractEntity.cs" />
+    <Compile Include="Entities\Abstract\IEntity.cs" />
     <Compile Include="Entities\Enums\RangeType.cs" />
     <Compile Include="Entities\FrisbeeModel.cs" />
     <Compile Include="Entities\Ingredient.cs" />
@@ -139,7 +146,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\img\processIcon.png" />
   </ItemGroup>

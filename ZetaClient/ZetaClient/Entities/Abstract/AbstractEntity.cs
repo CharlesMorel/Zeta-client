@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZetaClient.Entities
+namespace ZetaClient.Entities.Abstract
 {
-    public class AbstractEntity
+    public abstract class AbstractEntity : IEntity
     {
         public string Id { get; set; }
     }
