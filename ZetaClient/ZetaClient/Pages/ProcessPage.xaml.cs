@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ZetaClient.Entities;
+using ZetaClient.Services;
 
 namespace ZetaClient.pages
 {
@@ -21,42 +22,25 @@ namespace ZetaClient.pages
     /// </summary>
     public partial class ProcessPage : Page
     {
+        private readonly FrisbeeModelService _frisbeeModelService;
+        private readonly ProcessService _processService;
+        public List<FrisbeeModel> AllFrisbeeModel;
+
         public ProcessPage()
         {
             // todo: check user department
 
+            _frisbeeModelService = new FrisbeeModelService();
+            _processService = new ProcessService();
+
             InitializeComponent();
         }
 
-        private void ProcessPage_Loaded(object sender, EventArgs e)
+        private async void ProcessPage_Loaded(object sender, EventArgs e)
         {
-            ModelInput.ItemsSource = LoadFrisbeeModelCollection();
-            ProcessDataGrid.ItemsSource = LoadProcessCollection();
-        }
-
-        private List<Process> LoadProcessCollection()
-        {
-            return new List<Process>()
-            {
-                new Process()
-                {
-                    Name = "truc",
-                    Description = "truc",
-                    StepDescription = "truc",
-                    FrisbeeModel = new FrisbeeModel()
-                    {
-                        Name = "trtrtr"
-                    }
-                }
-            };
-        }
-
-        private List<FrisbeeModel> LoadFrisbeeModelCollection()
-        {
-            return new List<FrisbeeModel>()
-            {
-
-            };
+            AllFrisbeeModel = await _frisbeeModelService.Get();
+            ModelInput.ItemsSource = AllFrisbeeModel;
+            ProcessDataGrid.ItemsSource = await _processService.Get();
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)
@@ -65,7 +49,7 @@ namespace ZetaClient.pages
             ModifyNameInput.Text = process.Name;
             ModifyDescriptionInput.Text = process.Description;
             ModifyStepDescriptionInput.Text = process.StepDescription;
-            ModifyModelInput.ItemsSource = LoadFrisbeeModelCollection();
+            ModifyModelInput.ItemsSource = AllFrisbeeModel;
             ModifyModelInput.SelectedItem = process.FrisbeeModel;
             ModifyPopup.IsOpen = true;
         }
