@@ -95,7 +95,12 @@ namespace ZetaClient.pages
 
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
-            //Ingredient ingredient = ((FrameworkElement)sender).DataContext as Ingredient;
+            FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
+            ModifyNameInput.Text = model.Name;
+            ModifyDescriptionInput.Text = model.Description;
+            ModifypUHTInput.Text = model.pUHT;
+            ModifyRangeInput.SelectedItem = model.Range;
+            ModifyPopup.IsOpen = true;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -105,7 +110,58 @@ namespace ZetaClient.pages
 
         private void SeeIngredients_Click(object sender, RoutedEventArgs e)
         {
+            FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
+            IngPopupTitle.Content = $"Ingrédients du frisbee {model.Name}";
             // todo : retrieve model ingredients (service)
+            IngPopupDataGrid.ItemsSource = new List<ModelIngredient>()
+            {
+                new ModelIngredient()
+                {
+                    Ingredient = new Ingredient()
+                    {
+                        Name = "Ordure ménagère",
+                        Description = "Mmmmmh c'est bon !"
+                    },
+                    FrisbeeModel = model,
+                    Grammage = 249.5
+                },
+                new ModelIngredient()
+                {
+                    Ingredient = new Ingredient()
+                    {
+                        Name = "Béton armé",
+                        Description = "Ouh c'est dur !"
+                    },
+                    FrisbeeModel = model,
+                    Grammage = 10.50
+                },
+                new ModelIngredient()
+                {
+                    Ingredient = new Ingredient()
+                    {
+                        Name = "Amour",
+                        Description = "Essence de tout être..."
+                    },
+                    FrisbeeModel = model,
+                    Grammage = 500.50
+                },
+            };
+            IngredientsPopup.IsOpen = true;
+        }
+
+        private void ClosePopupButton_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            IngredientsPopup.IsOpen = false;
+        }
+
+        private void CloseModifyPopupButton_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ModifyPopup.IsOpen = false;
+        }
+
+        private void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

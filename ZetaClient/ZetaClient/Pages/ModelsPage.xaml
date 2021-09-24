@@ -101,6 +101,69 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+
+            <Popup x:Name="IngredientsPopup" Placement="Center" Width="500" Height="350">
+                <Border BorderThickness="1">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="IngPopupTitle" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                        <Label Name="ClosePopupButton" Content="X" FontWeight="Bold" Margin="4" HorizontalAlignment="Right" Cursor="Hand" MouseDown="ClosePopupButton_MouseDown" />
+
+                        <DataGrid Grid.Row="1" Name="IngPopupDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Ingredient.Name}" />
+                                <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Ingredient.Description}" />
+                                <DataGridTextColumn Width="Auto" Header="Grammage" Binding="{Binding Grammage}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+            </Popup>
+
+            <Popup x:Name="ModifyPopup" Placement="Center" Width="400" Height="350">
+                <Border BorderThickness="1">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Modifier le modèle" />
+
+                        <Label Name="CloseModifyPopupButton" Content="X" FontWeight="Bold" Margin="4" HorizontalAlignment="Right" Cursor="Hand" MouseDown="CloseModifyPopupButton_MouseDown" />
+
+                        <Grid Grid.Row="1" Margin="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Nom" />
+                            <TextBox x:Name="ModifyNameInput" Grid.Column="1" VerticalAlignment="Center" />
+                            <Label Grid.Row="1" Content="Description" />
+                            <TextBox x:Name="ModifyDescriptionInput" Grid.Row="1" Grid.Column="1" />
+                            <Label Grid.Row="2" Content="uPHT" />
+                            <TextBox x:Name="ModifypUHTInput" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+                            <Label Grid.Row="3" Content="Gamme" />
+                            <ListBox x:Name="ModifyRangeInput" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Source={StaticResource RangeTypeValues}}" Height="80" Margin="0,0,0,10" Padding="4" />
+                            <Button x:Name="ModifyValidationButton" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Padding="8, 4" Click="ModifyValidationButton_Click">Modifier</Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Popup>
         </Grid>
     </Grid>
 </Page>

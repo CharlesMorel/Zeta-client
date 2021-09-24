@@ -6,14 +6,24 @@
         xmlns:local="clr-namespace:ZetaClient"
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="800">
-    <Grid Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid Height="200" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="ConnectButton" Click="ConnectButton_Click">Connexion</Button>
+        <Label FontSize="18" HorizontalAlignment="Center" FontWeight="SemiBold">Connexion</Label>
+
+        <Label Grid.Row="1" Content="Email" />
+        <TextBox Grid.Row="2" x:Name="EmailInput" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+        <Label Grid.Row="3" Content="Mot de passe" />
+        <TextBox Grid.Row="4" x:Name="PasswordInput" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+        <Button Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="8, 4" x:Name="ConnectButton" Click="ConnectButton_Click">Connexion</Button>
     </Grid>
 </Window>

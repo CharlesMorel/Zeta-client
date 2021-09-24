@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using ZetaClient.Constants;
 
 namespace ZetaClient.pages
 {
@@ -32,7 +33,11 @@ namespace ZetaClient.pages
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-
+            AppConstants.IdSession = null;
+            LoginWindow login = new LoginWindow();
+            var main = Window.GetWindow(this);
+            login.Show();
+            main.Close();
         }
     }
 }
