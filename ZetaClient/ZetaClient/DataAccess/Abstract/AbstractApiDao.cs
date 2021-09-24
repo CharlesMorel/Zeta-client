@@ -7,7 +7,7 @@ using ZetaClient.Entities.Abstract;
 
 namespace ZetaClient.DataAccess.Abstract
 {
-    public abstract class AbstractApiDao<T> where T : class, IEntity
+    public abstract class AbstractApiDao<T> : IDao<T> where T : class, IEntity
     {
         public async Task<T> Get(string Id)
         {

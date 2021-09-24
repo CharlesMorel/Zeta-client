@@ -8,6 +8,7 @@ using System.Windows;
 using ZetaClient.Constants;
 using ZetaClient.DataAccess;
 using ZetaClient.Entities;
+using ZetaClient.Services;
 
 namespace ZetaClient
 {
@@ -16,11 +17,15 @@ namespace ZetaClient
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        private readonly IngredientService _ingredientService = new IngredientService();
+
+        protected async override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
             // todo: retrieve BaseApiUrl
+
+            await _ingredientService.Get();
         }
     }
 }

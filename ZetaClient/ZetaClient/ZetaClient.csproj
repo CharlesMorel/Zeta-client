@@ -62,6 +62,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataAccess\Abstract\IDao.cs" />
+    <Compile Include="Services\Abstract\AbstractService.cs" />
+    <Compile Include="Services\FrisbeeModelService.cs" />
+    <Compile Include="Services\IngredientService.cs" />
+    <Compile Include="Services\ProcessService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,9 +152,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="assets\img\processIcon.png" />
   </ItemGroup>
