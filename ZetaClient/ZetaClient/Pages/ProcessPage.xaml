@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:ZetaClient.pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProcessPage">
+      Title="ProcessPage"
+      Loaded="ProcessPage_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,6 +22,55 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Width="250" Height="400" VerticalAlignment="Top" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Nom" />
+                <TextBox x:Name="NameInput" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+                <Label Grid.Row="1" Content="Description" />
+                <TextBox x:Name="DescriptionInput" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+                <Label Grid.Row="2" Content="Etapes" />
+                <TextBox x:Name="StepDescriptionInput" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+                <Label Grid.Row="3" Content="Gamme" />
+                <ListBox x:Name="ModelInput" Height="80" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+
+                <Button x:Name="AddButton" Grid.Row="5" Grid.Column="1" Padding="4" HorizontalAlignment="Right" Click="AddButton_Click">Ajouter</Button>
+            </Grid>
+
+            <DataGrid Grid.Column="1" Name="ProcessDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}" />
+                    <DataGridTextColumn Width="Auto" Header="Etapes" Binding="{Binding StepDescription}" />
+                    <DataGridTextColumn Width="Auto" Header="Modèle" Binding="{Binding FrisbeeModel.Name}" />
+                    <DataGridTemplateColumn Width="Auto" Header="Modifier">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Modify" Click="Modify_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="Auto" Header="Supprimer">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Click="Remove_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </Page>

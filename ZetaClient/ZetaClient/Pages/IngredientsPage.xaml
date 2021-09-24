@@ -44,16 +44,16 @@
 
             <DataGrid Grid.Column="1" Name="IngDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
-                    <DataGridTemplateColumn Header="Modifier">
+                    <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}" />
+                    <DataGridTemplateColumn Width="Auto" Header="Modifier">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="Modify" Click="Modify_Click" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Supprimer">
+                    <DataGridTemplateColumn Width="Auto" Header="Supprimer">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="Delete" Click="Remove_Click" />

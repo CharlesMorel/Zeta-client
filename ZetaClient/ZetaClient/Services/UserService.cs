@@ -15,5 +15,7 @@ namespace ZetaClient.Services
         {
             Dao = new UserApiDao();
         }
+
+        // todo: add connection service ...
     }
 }

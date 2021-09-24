@@ -103,14 +103,9 @@ namespace ZetaClient.pages
             // todo get form informations, check inputs, and add object in database
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void SeeIngredients_Click(object sender, RoutedEventArgs e)
         {
-
+            // todo : retrieve model ingredients (service)
         }
     }
 }

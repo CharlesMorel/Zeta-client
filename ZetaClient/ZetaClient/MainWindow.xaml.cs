@@ -4,15 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Navigation;
+using ZetaClient.Constants;
 using ZetaClient.pages;
 
 namespace ZetaClient
@@ -31,7 +23,15 @@ namespace ZetaClient
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            frame.NavigationService.Navigate(new HomePage());
+            if (AppConstants.IdSession == null)
+            {
+                LoginWindow login = new LoginWindow();
+                login.Show();
+                Close();
+            } else
+            {
+                frame.NavigationService.Navigate(new HomePage());
+            }
         }
     }
 }

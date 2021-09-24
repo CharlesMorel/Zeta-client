@@ -1,16 +1,19 @@
-﻿<Window x:Class="ZetaClient.MainWindow"
+﻿<Window x:Class="ZetaClient.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZetaClient"
         mc:Ignorable="d"
-        Title="Zeta - Authentification" Height="600" Width="1000">
-    <Grid>
+        Title="LoginWindow" Height="450" Width="800">
+    <Grid Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Frame x:Name="frame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button x:Name="ConnectButton" Click="ConnectButton_Click">Connexion</Button>
     </Grid>
 </Window>

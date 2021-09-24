@@ -64,11 +64,18 @@
     </ApplicationDefinition>
     <Compile Include="DataAccess\Abstract\IDao.cs" />
     <Compile Include="Entities\Enums\UserDepartment.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\Abstract\AbstractService.cs" />
     <Compile Include="Services\FrisbeeModelService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\ProcessService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

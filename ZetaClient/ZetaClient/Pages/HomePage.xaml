@@ -14,7 +14,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Accueil" HorizontalAlignment="Center" FontSize="18" />
+        <TextBlock Grid.Row="0" Text="Accueil" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" />
+
+        <Button x:Name="LogoutButton" Grid.Row="0" HorizontalAlignment="Right" Margin="10" Padding="8, 4" Click="LogoutButton_Click">Déconnexion</Button>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

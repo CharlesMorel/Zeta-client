@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\App.xaml
-51395871145
+6-2012861207
 
-33-772935304
+341255858001
 161815971233
-MainWindow.xaml;Pages\HomePage.xaml;Pages\IngredientsPage.xaml;Pages\ModelsPage.xaml;Pages\ProcessPage.xaml;
+LoginWindow.xaml;MainWindow.xaml;Pages\HomePage.xaml;Pages\IngredientsPage.xaml;Pages\ModelsPage.xaml;Pages\ProcessPage.xaml;
 
-False
+True
 

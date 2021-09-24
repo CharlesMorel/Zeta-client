@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ZetaClient.Entities;
 
 namespace ZetaClient.pages
 {
@@ -25,6 +26,44 @@ namespace ZetaClient.pages
             // todo: check user department
 
             InitializeComponent();
+        }
+
+        private void ProcessPage_Loaded(object sender, EventArgs e)
+        {
+            ModelInput.ItemsSource = LoadFrisbeeModelCollection();
+            //ModelInput.SelectedItem = ...
+            ProcessDataGrid.ItemsSource = LoadProcessCollection();
+        }
+
+        private List<Process> LoadProcessCollection()
+        {
+            return new List<Process>()
+            {
+
+            };
+        }
+
+        private List<FrisbeeModel> LoadFrisbeeModelCollection()
+        {
+            return new List<FrisbeeModel>()
+            {
+
+            };
+        }
+
+        private void Modify_Click(object sender, RoutedEventArgs e)
+        {
+            //todo
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            //todo
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            //todo
         }
     }
 }
