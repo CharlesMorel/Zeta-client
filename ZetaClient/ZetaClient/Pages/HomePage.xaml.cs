@@ -22,6 +22,8 @@ namespace ZetaClient.pages
     {
         public HomePage()
         {
+            // todo: check user department
+
             InitializeComponent();
         }
 

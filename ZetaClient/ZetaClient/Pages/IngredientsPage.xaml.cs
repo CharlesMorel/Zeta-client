@@ -14,6 +14,8 @@ namespace ZetaClient.pages
     {
         public IngredientsPage()
         {
+            // todo: check user department
+
             InitializeComponent();
         }
 

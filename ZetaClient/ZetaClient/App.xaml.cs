@@ -23,9 +23,7 @@ namespace ZetaClient
         {
             base.OnStartup(e);
 
-            // todo: retrieve BaseApiUrl
-
-            await _ingredientService.Get();
+            // todo: retrieve BaseApiUrl & user
         }
     }
 }

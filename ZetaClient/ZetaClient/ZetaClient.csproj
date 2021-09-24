@@ -63,6 +63,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataAccess\Abstract\IDao.cs" />
+    <Compile Include="Entities\Enums\UserDepartment.cs" />
     <Compile Include="Services\Abstract\AbstractService.cs" />
     <Compile Include="Services\FrisbeeModelService.cs" />
     <Compile Include="Services\IngredientService.cs" />
