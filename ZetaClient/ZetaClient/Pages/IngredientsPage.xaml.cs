@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using ZetaClient.Entities;
+using ZetaClient.Services;
 
 namespace ZetaClient.pages
 {
@@ -12,58 +14,60 @@ namespace ZetaClient.pages
     /// </summary>
     public partial class IngredientsPage : Page
     {
+        private readonly IngredientService _ingredientService;
         public IngredientsPage()
         {
             // todo: check user department
 
+            _ingredientService = new IngredientService();
+
             InitializeComponent();
         }
 
-        private void IngredientsPage_Loaded(object sender, EventArgs e)
+        private async void IngredientsPage_Loaded(object sender, EventArgs e)
         {
-            IngDataGrid.ItemsSource = LoadIngredientCollection();
+            IngDataGrid.ItemsSource = await _ingredientService.Get();
         }
 
-        List<Ingredient> LoadIngredientCollection()
-        {
-            return new List<Ingredient>()
-            {
-                new Ingredient()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Plomb",
-                    Description = "Ceci est du plomb."
-                },
-                new Ingredient()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Ciment",
-                    Description = "Ceci est du ciment."
-                },
-                new Ingredient()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Plastique",
-                    Description = "Ceci est du Plastique."
-                }
-            };
-        }
-
-        private void Remove_Click(object sender, RoutedEventArgs e)
+        private async void Remove_Click(object sender, RoutedEventArgs e)
         {
             Ingredient ingredient = ((FrameworkElement)sender).DataContext as Ingredient;
 
-            // todo : send http delete request
+            await _ingredientService.Delete(ingredient.Id);
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
             Ingredient ingredient = ((FrameworkElement)sender).DataContext as Ingredient;
+            ModifyNameInput.Text = ingredient.Name;
+            ModifyDescriptionInput.Text = ingredient.Description;
+            ModifyPopup.IsOpen = true;
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // todo get form informations, check inputs, and add object in database
+            if (NameInput.Text.Length > 0 && DescriptionInput.Text.Length > 0)
+            {
+                await _ingredientService.Create(new Ingredient()
+                {
+                    Name = NameInput.Text,
+                    Description = DescriptionInput.Text
+                });
+            }
+        }
+
+        private void CloseModifyPopupButton_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ModifyPopup.IsOpen = false;
+        }
+
+        private async void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
+        {
+            Ingredient ingredient = ((FrameworkElement)sender).DataContext as Ingredient;
+            ingredient.Name = ModifyNameInput.Text;
+            ingredient.Description = ModifyDescriptionInput.Text;
+            await _ingredientService.Update(ingredient);
+            ModifyPopup.IsOpen = false;
         }
     }
 }
