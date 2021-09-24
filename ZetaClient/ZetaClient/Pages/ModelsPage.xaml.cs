@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ZetaClient.Entities;
 using ZetaClient.Entities.Enums;
+using ZetaClient.Services;
 
 namespace ZetaClient.pages
 {
@@ -13,84 +14,29 @@ namespace ZetaClient.pages
     /// </summary>
     public partial class ModelsPage : Page
     {
+        private readonly FrisbeeModelService _frisbeeModelService;
+        private readonly IngredientService _ingredientService;
         public ModelsPage()
         {
             // todo: check user department
 
+            _frisbeeModelService = new FrisbeeModelService();
+            _ingredientService = new IngredientService();
+
             InitializeComponent();
         }
 
-        private void ModelPage_Loaded(object sender, EventArgs e)
+        private async void ModelPage_Loaded(object sender, EventArgs e)
         {
-            ModelDataGrid.ItemsSource = LoadFrisbeeModelCollection();
-            IngredientsListBox.ItemsSource = LoadIngredientCollection();
+            ModelDataGrid.ItemsSource = await _ingredientService.Get();
+            IngredientsListBox.ItemsSource = await _ingredientService.Get();
         }
 
-        private List<FrisbeeModel> LoadFrisbeeModelCollection()
+        private async void Remove_Click(object sender, RoutedEventArgs e)
         {
-            return new List<FrisbeeModel>()
-            {
-                new FrisbeeModel()
-                {
-                    Name = "Large",
-                    Description = "Ceci est un frisbee de grande taille",
-                    pUHT = "Coucou",
-                    Range = RangeType.Luxe 
-                },
-                new FrisbeeModel()
-                {
-                    Name = "Medium",
-                    Description = "Ceci est un frisbee de moyenne taille",
-                    pUHT = "test",
-                    Range = RangeType.Luxe 
-                },
-                new FrisbeeModel()
-                {
-                    Name = "Small",
-                    Description = "Ceci est un frisbee de petite taille",
-                    pUHT = "test2",
-                    Range = RangeType.Standard 
-                },
-                new FrisbeeModel()
-                {
-                    Name = "Extra Large",
-                    Description = "Ceci est un frisbee de très grande taille",
-                    pUHT = "test3",
-                    Range = RangeType.Standard 
-                },
-            };
-        }
+            FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
 
-        List<Ingredient> LoadIngredientCollection()
-        {
-            return new List<Ingredient>()
-            {
-                new Ingredient()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Plomb",
-                    Description = "Ceci est du plomb.",
-                },
-                new Ingredient()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Ciment",
-                    Description = "Ceci est du ciment."
-                },
-                new Ingredient()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = "Plastique",
-                    Description = "Ceci est du Plastique."
-                }
-            };
-        }
-
-        private void Remove_Click(object sender, RoutedEventArgs e)
-        {
-            //Ingredient ingredient = ((FrameworkElement)sender).DataContext as Ingredient;
-
-            // todo : send http delete request
+            await _frisbeeModelService.Delete(model.Id);
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)
@@ -103,49 +49,29 @@ namespace ZetaClient.pages
             ModifyPopup.IsOpen = true;
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // todo get form informations, check inputs, and add object in database
+            if (NameInput.Text.Length > 0 &&
+                DescriptionInput.Text.Length > 0 &&
+                pUHTInput.Text.Length > 0 &&
+                IngredientsListBox.SelectedItems.Count > 0)
+            {
+                await _frisbeeModelService.Create(new FrisbeeModel()
+                {
+                    Name = NameInput.Text,
+                    Description = DescriptionInput.Text,
+                    pUHT = pUHTInput.Text,
+                    Range = (RangeType)RangeInput.SelectedItem
+                }, (List<Ingredient>)IngredientsListBox.SelectedItems);
+            }
         }
 
-        private void SeeIngredients_Click(object sender, RoutedEventArgs e)
+        private async void SeeIngredients_Click(object sender, RoutedEventArgs e)
         {
             FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
             IngPopupTitle.Content = $"Ingrédients du frisbee {model.Name}";
             // todo : retrieve model ingredients (service)
-            IngPopupDataGrid.ItemsSource = new List<ModelIngredient>()
-            {
-                new ModelIngredient()
-                {
-                    Ingredient = new Ingredient()
-                    {
-                        Name = "Ordure ménagère",
-                        Description = "Mmmmmh c'est bon !"
-                    },
-                    FrisbeeModel = model,
-                    Grammage = 249.5
-                },
-                new ModelIngredient()
-                {
-                    Ingredient = new Ingredient()
-                    {
-                        Name = "Béton armé",
-                        Description = "Ouh c'est dur !"
-                    },
-                    FrisbeeModel = model,
-                    Grammage = 10.50
-                },
-                new ModelIngredient()
-                {
-                    Ingredient = new Ingredient()
-                    {
-                        Name = "Amour",
-                        Description = "Essence de tout être..."
-                    },
-                    FrisbeeModel = model,
-                    Grammage = 500.50
-                },
-            };
+            IngPopupDataGrid.ItemsSource = await _frisbeeModelService.GetIngredientByModel(model.Id);
             IngredientsPopup.IsOpen = true;
         }
 
@@ -159,9 +85,15 @@ namespace ZetaClient.pages
             ModifyPopup.IsOpen = false;
         }
 
-        private void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
+        private async void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
         {
-
+            FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
+            model.Name = NameInput.Text;
+            model.Description = DescriptionInput.Text;
+            model.pUHT = pUHTInput.Text;
+            model.Range = (RangeType)RangeInput.SelectedItem;
+            await _frisbeeModelService.Update(model);
+            ModifyPopup.IsOpen = false;
         }
     }
 }

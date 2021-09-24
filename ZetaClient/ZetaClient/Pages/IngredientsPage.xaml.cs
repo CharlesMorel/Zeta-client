@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using ZetaClient.Constants;
 using ZetaClient.Entities;
 using ZetaClient.Services;
 
@@ -17,8 +18,6 @@ namespace ZetaClient.pages
         private readonly IngredientService _ingredientService;
         public IngredientsPage()
         {
-            // todo: check user department
-
             _ingredientService = new IngredientService();
 
             InitializeComponent();

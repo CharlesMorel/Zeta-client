@@ -24,6 +24,11 @@ namespace ZetaClient.DataAccess.Abstract
             throw new NotImplementedException();
         }
 
+        public async Task Insert(List<T> entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task Update(T entity)
         {
             throw new NotImplementedException();

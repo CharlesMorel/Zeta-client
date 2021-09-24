@@ -15,6 +15,8 @@ namespace ZetaClient.DataAccess.Abstract
 
         Task Insert(T entity);
 
+        Task Insert(List<T> entity);
+
         Task Update(T entity);
 
         Task Delete(string id);
