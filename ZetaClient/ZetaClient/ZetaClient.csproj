@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -63,14 +66,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataAccess\Abstract\IDao.cs" />
+    <Compile Include="DataAccess\SessionApiDao.cs" />
     <Compile Include="Entities\Enums\UserDepartment.cs" />
+    <Compile Include="Entities\Session.cs" />
+    <Compile Include="Helpers\ApiRequestHelper.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Managers\ConnectionManager.cs" />
     <Compile Include="Services\Abstract\AbstractService.cs" />
     <Compile Include="Services\FrisbeeModelService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\ProcessService.cs" />
+    <Compile Include="Services\SessionService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>

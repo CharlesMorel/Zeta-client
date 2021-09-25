@@ -54,19 +54,31 @@ namespace ZetaClient.pages
             ModifyPopup.IsOpen = true;
         }
 
-        private void Remove_Click(object sender, RoutedEventArgs e)
+        private async void Remove_Click(object sender, RoutedEventArgs e)
         {
-            //todo
+            Process process = ((FrameworkElement)sender).DataContext as Process;
+            await _processService.Delete(process.Id);
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            //todo
+            await _processService.Create(new Process()
+            {
+                Name = NameInput.Text,
+                Description = DescriptionInput.Text,
+                StepDescription = StepDescriptionInput.Text,
+                FrisbeeModel = (FrisbeeModel)ModelInput.SelectedItem
+            });
         }
 
-        private void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
+        private async void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
         {
-            // do something
+            Process process = ((FrameworkElement)sender).DataContext as Process;
+            process.Name = ModifyNameInput.Text;
+            process.Description = ModifyDescriptionInput.Text;
+            process.StepDescription = ModifyStepDescriptionInput.Text;
+            process.FrisbeeModel = (FrisbeeModel)ModifyModelInput.SelectedItem;
+            await _processService.Update(process);
             ModifyPopup.IsOpen = false;
         }
 

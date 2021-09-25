@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ZetaClient.Constants;
+using ZetaClient.Services;
 
 namespace ZetaClient
 {
@@ -20,18 +21,35 @@ namespace ZetaClient
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private readonly UserService _userService;
         public LoginWindow()
         {
+            _userService = new UserService();
             InitializeComponent();
         }
 
-        private void ConnectButton_Click(object sender, RoutedEventArgs e)
+        private async void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
             // todo: use connection service here
-            AppConstants.IdSession = "dubrun";
-            MainWindow main = new MainWindow();
-            main.Show();
-            Close();
+            string email = EmailInput.Text;
+            string password = PasswordInput.Text;
+            if (email.Length > 0 && password.Length > 0)
+            {
+                try
+                {
+                    await _userService.Login(email, password);
+                } 
+                catch (Exception ex)
+                {
+                    AlertLabel.Text = ex.Message;
+                }
+                MainWindow main = new MainWindow();
+                main.Show();
+                Close();
+            } else
+            {
+                AlertLabel.Text = "Veuillez compléter les champs ci-dessus.";
+            }
         }
     }
 }

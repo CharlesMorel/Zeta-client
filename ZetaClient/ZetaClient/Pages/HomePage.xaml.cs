@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using ZetaClient.Constants;
+using ZetaClient.Services;
 
 namespace ZetaClient.pages
 {
@@ -9,9 +10,11 @@ namespace ZetaClient.pages
     /// </summary>
     public partial class HomePage : Page
     {
+        private readonly UserService userService;
         public HomePage()
         {
             // todo: check user department
+            userService = new UserService();
 
             InitializeComponent();
         }
@@ -31,11 +34,11 @@ namespace ZetaClient.pages
             this.NavigationService.Navigate(new ProcessPage());
         }
 
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            AppConstants.IdSession = null;
+            await userService.Logout();
             LoginWindow login = new LoginWindow();
-            var main = Window.GetWindow(this);
+            Window main = Window.GetWindow(this);
             login.Show();
             main.Close();
         }
