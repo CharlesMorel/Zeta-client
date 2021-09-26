@@ -31,5 +31,14 @@ namespace ZetaClient.Properties {
                 return ((string)(this["BaseApiUrl"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string IdSession {
+            get {
+                return ((string)(this["IdSession"]));
+            }
+        }
     }
 }

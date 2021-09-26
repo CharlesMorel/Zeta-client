@@ -9,7 +9,7 @@ namespace ZetaClient.Entities
 {
     public class Session : AbstractEntity
     {
-        public string IdUser { get; set; }
+        public User User { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool Closed { get; set; }
     }
