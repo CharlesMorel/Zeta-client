@@ -22,8 +22,17 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <Grid Grid.Column="0" Width="250" Height="400" VerticalAlignment="Top" Margin="10">
+            <DockPanel Grid.Column="1" HorizontalAlignment="Right">
+                <Label Grid.Column="1" Content="Rechercher" />
+                <TextBox x:Name="SearchTextBox" Grid.Column="1" HorizontalAlignment="Right" Width="160" Margin="10, 0" VerticalAlignment="Center" Padding="4" KeyUp="SearchTextBox_KeyUp" />
+            </DockPanel>
+
+            <Grid Grid.Row="1" Grid.Column="0" Width="250" Height="400" VerticalAlignment="Top" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -49,7 +58,7 @@
                 <Button x:Name="AddButton" Grid.Row="5" Grid.Column="1" Padding="4" HorizontalAlignment="Right" Click="AddButton_Click">Ajouter</Button>
             </Grid>
 
-            <DataGrid Grid.Column="1" Name="ProcessDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+            <DataGrid Grid.Row="1" Grid.Column="1" Name="ProcessDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Name}" />
                     <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}" />

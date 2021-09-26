@@ -39,8 +39,8 @@ namespace ZetaClient
                 Close();
             } else
             {
-                Session session = await sessionService.Get(AppConstants.IdSession);
-                AppConstants.CurrentUser = session.User;
+                //Session session = await sessionService.Get(AppConstants.IdSession);
+                //AppConstants.CurrentUser = session.User;
                 frame.NavigationService.Navigate(new HomePage());
             }
         }

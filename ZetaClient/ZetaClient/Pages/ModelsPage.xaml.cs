@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ZetaClient.Entities;
@@ -16,6 +17,7 @@ namespace ZetaClient.pages
     {
         private readonly FrisbeeModelService _frisbeeModelService;
         private readonly IngredientService _ingredientService;
+        private List<FrisbeeModel> allModels;
         public ModelsPage()
         {
             // todo: check user department
@@ -28,8 +30,9 @@ namespace ZetaClient.pages
 
         private async void ModelPage_Loaded(object sender, EventArgs e)
         {
-            //ModelDataGrid.ItemsSource = await _ingredientService.Get();
-            //IngredientsListBox.ItemsSource = await _ingredientService.Get();
+            allModels = await _frisbeeModelService.Get();
+            ModelDataGrid.ItemsSource = allModels;
+            IngredientsListBox.ItemsSource = await _ingredientService.Get();
         }
 
         private async void Remove_Click(object sender, RoutedEventArgs e)
@@ -93,6 +96,18 @@ namespace ZetaClient.pages
             model.Range = (RangeType)RangeInput.SelectedItem;
             await _frisbeeModelService.Update(model);
             ModifyPopup.IsOpen = false;
+        }
+
+        private void SearchTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            string search = SearchTextBox.Text;
+            var filtered = allModels.Where(model => 
+                model.Name.Contains(search) || 
+                model.Description.Contains(search) || 
+                model.pUHT.Contains(search) || 
+                model.Range.ToString().Contains(search));
+
+            ModelDataGrid.ItemsSource = filtered;
         }
     }
 }

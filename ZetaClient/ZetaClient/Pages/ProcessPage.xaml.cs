@@ -25,6 +25,7 @@ namespace ZetaClient.pages
         private readonly FrisbeeModelService _frisbeeModelService;
         private readonly ProcessService _processService;
         public List<FrisbeeModel> AllFrisbeeModel;
+        private List<Process> allProcess;
 
         public ProcessPage()
         {
@@ -38,9 +39,10 @@ namespace ZetaClient.pages
 
         private async void ProcessPage_Loaded(object sender, EventArgs e)
         {
-            //AllFrisbeeModel = await _frisbeeModelService.Get();
-            //ModelInput.ItemsSource = AllFrisbeeModel;
-            //ProcessDataGrid.ItemsSource = await _processService.Get();
+            allProcess = await _processService.Get();
+            AllFrisbeeModel = await _frisbeeModelService.Get();
+            ModelInput.ItemsSource = AllFrisbeeModel;
+            ProcessDataGrid.ItemsSource = allProcess;
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)
@@ -85,6 +87,18 @@ namespace ZetaClient.pages
         private void CloseModifyPopupButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ModifyPopup.IsOpen = false;
+        }
+
+        private void SearchTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            string search = SearchTextBox.Text;
+            var filtered = allProcess.Where(process => 
+                process.Name.Contains(search) || 
+                process.Description.Contains(search) || 
+                process.StepDescription.Contains(search) || 
+                process.FrisbeeModel.Name.Contains(search));
+
+            ProcessDataGrid.ItemsSource = filtered;
         }
     }
 }

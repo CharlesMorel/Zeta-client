@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ namespace ZetaClient.pages
     public partial class IngredientsPage : Page
     {
         private readonly IngredientService _ingredientService;
+        private List<Ingredient> allIngredients;
         public IngredientsPage()
         {
             _ingredientService = new IngredientService();
@@ -25,7 +27,8 @@ namespace ZetaClient.pages
 
         private async void IngredientsPage_Loaded(object sender, EventArgs e)
         {
-            //IngDataGrid.ItemsSource = await _ingredientService.Get();
+            allIngredients = await _ingredientService.Get();
+            IngDataGrid.ItemsSource = allIngredients;
         }
 
         private async void Remove_Click(object sender, RoutedEventArgs e)
@@ -67,6 +70,14 @@ namespace ZetaClient.pages
             ingredient.Description = ModifyDescriptionInput.Text;
             await _ingredientService.Update(ingredient);
             ModifyPopup.IsOpen = false;
+        }
+
+        private void SearchTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            string search = SearchTextBox.Text;
+            var filtered = allIngredients.Where(ingredient => ingredient.Name.Contains(search) || ingredient.Description.Contains(search));
+
+            IngDataGrid.ItemsSource = filtered;
         }
     }
 }

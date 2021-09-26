@@ -30,26 +30,30 @@ namespace ZetaClient
 
         private async void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-            // todo: use connection service here
-            string email = EmailInput.Text;
-            string password = PasswordInput.Text;
-            if (email.Length > 0 && password.Length > 0)
-            {
-                try
-                {
-                    await _userService.Login(email, password);
-                } 
-                catch (Exception ex)
-                {
-                    AlertLabel.Text = ex.Message;
-                }
-                MainWindow main = new MainWindow();
-                main.Show();
-                Close();
-            } else
-            {
-                AlertLabel.Text = "Veuillez compléter les champs ci-dessus.";
-            }
+            AppConstants.IdSession = "e";
+            MainWindow main = new MainWindow();
+            main.Show();
+            Close();
+            //string email = EmailInput.Text;
+            //string password = PasswordInput.Text;
+            //if (email.Length > 0 && password.Length > 0)
+            //{
+            //    try
+            //    {
+            //        await _userService.Login(email, password);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        AlertLabel.Text = ex.Message;
+            //    }
+            //    MainWindow main = new MainWindow();
+            //    main.Show();
+            //    Close();
+            //}
+            //else
+            //{
+            //    AlertLabel.Text = "Veuillez compléter les champs ci-dessus.";
+            //}
         }
     }
 }
