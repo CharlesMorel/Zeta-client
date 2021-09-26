@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using ZetaClient.Constants;
@@ -38,6 +40,23 @@ namespace ZetaClient.Helpers
             }
 
             return AppConstants.BaseApiUrl;
+        }
+
+        public static HttpClient GetHttpClient(bool requireAuth = true, bool receiveData = false)
+        {
+            HttpClient client = new HttpClient();
+            
+            if(requireAuth)
+            {
+                client.DefaultRequestHeaders.TryAddWithoutValidation("ApiKey", AppConstants.ApiKey);
+                client.DefaultRequestHeaders.TryAddWithoutValidation("IdSession", AppConstants.IdSession);
+            }
+            if(receiveData)
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+
+            return client;
         }
     }
 }

@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using ZetaClient.Constants;
-using ZetaClient.DataAccess;
-using ZetaClient.Entities;
 using ZetaClient.Services;
 
 namespace ZetaClient
@@ -23,6 +15,7 @@ namespace ZetaClient
         {
             base.OnStartup(e);
 
+            
             // todo: retrieve BaseApiUrl & user
         }
     }

@@ -25,7 +25,7 @@ namespace ZetaClient.pages
 
         private async void IngredientsPage_Loaded(object sender, EventArgs e)
         {
-            IngDataGrid.ItemsSource = await _ingredientService.Get();
+            //IngDataGrid.ItemsSource = await _ingredientService.Get();
         }
 
         private async void Remove_Click(object sender, RoutedEventArgs e)

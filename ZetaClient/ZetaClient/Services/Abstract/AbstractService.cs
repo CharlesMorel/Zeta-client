@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using ZetaClient.DataAccess.Abstract;
@@ -29,7 +30,6 @@ namespace ZetaClient.Services.Abstract
 
         public async Task Update(T entity)
         {
-            // todo: empty object properties
             await Dao.Update(entity);
         }
 

@@ -28,8 +28,8 @@ namespace ZetaClient.pages
 
         private async void ModelPage_Loaded(object sender, EventArgs e)
         {
-            ModelDataGrid.ItemsSource = await _ingredientService.Get();
-            IngredientsListBox.ItemsSource = await _ingredientService.Get();
+            //ModelDataGrid.ItemsSource = await _ingredientService.Get();
+            //IngredientsListBox.ItemsSource = await _ingredientService.Get();
         }
 
         private async void Remove_Click(object sender, RoutedEventArgs e)
@@ -70,7 +70,6 @@ namespace ZetaClient.pages
         {
             FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
             IngPopupTitle.Content = $"Ingrédients du frisbee {model.Name}";
-            // todo : retrieve model ingredients (service)
             IngPopupDataGrid.ItemsSource = await _frisbeeModelService.GetIngredientByModel(model.Id);
             IngredientsPopup.IsOpen = true;
         }

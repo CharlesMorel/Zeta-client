@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ZetaClient",
+    "\\ZetaClient\\ZetaClient"
   ],
+  "SelectedNode": "\\ZetaClient\\ZetaClient\\LoginWindow.xaml",
   "PreviewInSolutionExplorer": false
 }

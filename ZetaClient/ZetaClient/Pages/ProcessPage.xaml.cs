@@ -38,9 +38,9 @@ namespace ZetaClient.pages
 
         private async void ProcessPage_Loaded(object sender, EventArgs e)
         {
-            AllFrisbeeModel = await _frisbeeModelService.Get();
-            ModelInput.ItemsSource = AllFrisbeeModel;
-            ProcessDataGrid.ItemsSource = await _processService.Get();
+            //AllFrisbeeModel = await _frisbeeModelService.Get();
+            //ModelInput.ItemsSource = AllFrisbeeModel;
+            //ProcessDataGrid.ItemsSource = await _processService.Get();
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)
