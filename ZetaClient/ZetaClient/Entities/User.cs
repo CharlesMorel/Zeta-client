@@ -13,7 +13,5 @@ namespace ZetaClient.Entities
     {
         public string Email { get; set; }
         public UserDepartment Department { get; set; }
-        public string Password { get; set; }
-        public string Salt { get; set; } = HashHelper.GenerateSalt();
     }
 }

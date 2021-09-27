@@ -30,10 +30,6 @@ namespace ZetaClient.Helpers
             {
                 return $"{AppConstants.BaseApiUrl}process/";
             }
-            if (type == typeof(Session))
-            {
-                return $"{AppConstants.BaseApiUrl}sessions/";
-            }
             if (type == typeof(User))
             {
                 return $"{AppConstants.BaseApiUrl}users/";
@@ -49,7 +45,6 @@ namespace ZetaClient.Helpers
             if(requireAuth)
             {
                 client.DefaultRequestHeaders.TryAddWithoutValidation("ApiKey", AppConstants.ApiKey);
-                client.DefaultRequestHeaders.TryAddWithoutValidation("IdSession", AppConstants.IdSession);
             }
             if(receiveData)
             {

@@ -16,10 +16,8 @@ namespace ZetaClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly SessionService sessionService;
         public MainWindow()
         {
-            sessionService = new SessionService();
 
             InitializeComponent();
 
@@ -30,17 +28,13 @@ namespace ZetaClient
         {
             // todo
             //AppConstants.BaseApiUrl = Properties.Settings.Default.BaseApiUrl;
-            //AppConstants.IdSession = Properties.Settings.Default.IdSession;
-            //Voir comment récupérer l'apikey si idsession récupéré
-            if (AppConstants.IdSession == null)
+            if (AppConstants.ApiKey == null)
             {
                 LoginWindow login = new LoginWindow();
                 login.Show();
                 Close();
             } else
             {
-                //Session session = await sessionService.Get(AppConstants.IdSession);
-                //AppConstants.CurrentUser = session.User;
                 frame.NavigationService.Navigate(new HomePage());
             }
         }

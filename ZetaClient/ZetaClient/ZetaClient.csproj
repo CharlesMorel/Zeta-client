@@ -86,9 +86,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataAccess\Abstract\IDao.cs" />
-    <Compile Include="DataAccess\SessionApiDao.cs" />
     <Compile Include="Entities\Enums\UserDepartment.cs" />
-    <Compile Include="Entities\Session.cs" />
     <Compile Include="Helpers\ApiRequestHelper.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -98,7 +96,6 @@
     <Compile Include="Services\FrisbeeModelService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\ProcessService.cs" />
-    <Compile Include="Services\SessionService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -127,7 +124,6 @@
     <Compile Include="Entities\ModelIngredient.cs" />
     <Compile Include="Entities\Process.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -20,15 +20,16 @@ namespace ZetaClient.Services
 
         public async Task Login(string email, string password)
         {
-            Dictionary<string, object> logResult = await ConnectionManager.LogUserIn(email, password);
-            AppConstants.ApiKey = logResult["ApiKey"] as string;
-            AppConstants.IdSession = logResult["SessionToken"] as string;
+            AppConstants.ApiKey = "";
+            //Dictionary<string, object> logResult = await ConnectionManager.LogUserIn(email, password);
+            //AppConstants.ApiKey = logResult["ApiKey"] as string;
+            // todo
+            //AppConstants.CurrentUser = ...
         }
 
         public async Task Logout()
         {
             await ConnectionManager.LogOut();
-            AppConstants.IdSession = null;
             AppConstants.CurrentUser = null;
         }
     }
