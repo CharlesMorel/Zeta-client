@@ -10,6 +10,7 @@ namespace ZetaClient.Entities.Enums
     {
         RD = 0,
         Test = 1,
-        Production = 2
+        Production = 2,
+        None = 3
     }
 }

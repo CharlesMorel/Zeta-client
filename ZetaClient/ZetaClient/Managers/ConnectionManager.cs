@@ -12,24 +12,22 @@ namespace ZetaClient.Managers
 {
     public static class ConnectionManager
     {
-        public async static Task<Dictionary<string, object>> LogUserIn(string email, string password)
+        public async static Task<Dictionary<string, object>> LogUserIn(string username, string password)
         {
             HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(receiveData: true).PostAsJsonAsync($"{AppConstants.BaseApiUrl}auth/", new
             {
-                Email = email,
+                Username = username,
                 Password = password
             });
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
-            }
-            
-            return JsonConvert.DeserializeObject<Dictionary<string, object>>(await response.Content.ReadAsStringAsync());
+
+            return !response.IsSuccessStatusCode
+                ? throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}")
+                : JsonConvert.DeserializeObject<Dictionary<string, object>>(await response.Content.ReadAsStringAsync());
         }
 
         public async static Task LogOut()
         {
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).DeleteAsync($"{AppConstants.BaseApiUrl}auth/");
+            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).GetAsync($"{AppConstants.BaseApiUrl}auth/");
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");

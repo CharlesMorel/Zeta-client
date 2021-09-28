@@ -31,7 +31,7 @@ namespace ZetaClient
         private async void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailInput.Text;
-            string password = PasswordInput.Text;
+            string password = PasswordInput.Password;
             if (email.Length > 0 && password.Length > 0)
             {
                 try

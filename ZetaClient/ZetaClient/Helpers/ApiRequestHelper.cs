@@ -30,10 +30,6 @@ namespace ZetaClient.Helpers
             {
                 return $"{AppConstants.BaseApiUrl}process/";
             }
-            if (type == typeof(User))
-            {
-                return $"{AppConstants.BaseApiUrl}users/";
-            }
 
             return AppConstants.BaseApiUrl;
         }

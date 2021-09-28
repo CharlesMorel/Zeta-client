@@ -6,31 +6,26 @@ using System.Threading.Tasks;
 using ZetaClient.Constants;
 using ZetaClient.DataAccess;
 using ZetaClient.Entities;
+using ZetaClient.Entities.Enums;
 using ZetaClient.Managers;
 using ZetaClient.Services.Abstract;
 
 namespace ZetaClient.Services
 {
-    public class UserService : AbstractService<User>
+    public class UserService
     {
-        public UserService()
+        public async Task Login(string username, string password)
         {
-            Dao = new UserApiDao();
-        }
-
-        public async Task Login(string email, string password)
-        {
-            AppConstants.ApiKey = "";
-            //Dictionary<string, object> logResult = await ConnectionManager.LogUserIn(email, password);
-            //AppConstants.ApiKey = logResult["ApiKey"] as string;
+            Dictionary<string, object> logResult = await ConnectionManager.LogUserIn(username, password);
+            AppConstants.ApiKey = logResult["ApiKey"] as string;
             // todo
-            //AppConstants.CurrentUser = ...
+            AppConstants.CurrentUserDepartment = UserDepartment.RD;
         }
 
         public async Task Logout()
         {
             await ConnectionManager.LogOut();
-            AppConstants.CurrentUser = null;
+            AppConstants.CurrentUserDepartment = UserDepartment.None;
         }
     }
 }
