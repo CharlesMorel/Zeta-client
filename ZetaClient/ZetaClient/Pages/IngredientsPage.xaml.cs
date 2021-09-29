@@ -18,6 +18,8 @@ namespace ZetaClient.pages
     {
         private readonly IngredientService _ingredientService;
         private List<Ingredient> allIngredients;
+        private Ingredient selectedIngredient;
+
         public IngredientsPage()
         {
             _ingredientService = new IngredientService();
@@ -36,11 +38,14 @@ namespace ZetaClient.pages
             Ingredient ingredient = ((FrameworkElement)sender).DataContext as Ingredient;
 
             await _ingredientService.Delete(ingredient.Id);
+            allIngredients = await _ingredientService.Get();
+            IngDataGrid.ItemsSource = allIngredients;
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
             Ingredient ingredient = ((FrameworkElement)sender).DataContext as Ingredient;
+            selectedIngredient = ingredient;
             ModifyNameInput.Text = ingredient.Name;
             ModifyDescriptionInput.Text = ingredient.Description;
             ModifyPopup.IsOpen = true;
@@ -55,6 +60,8 @@ namespace ZetaClient.pages
                     Name = NameInput.Text,
                     Description = DescriptionInput.Text
                 });
+                allIngredients = await _ingredientService.Get();
+                IngDataGrid.ItemsSource = allIngredients;
             }
         }
 
@@ -65,10 +72,11 @@ namespace ZetaClient.pages
 
         private async void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
         {
-            Ingredient ingredient = ((FrameworkElement)sender).DataContext as Ingredient;
-            ingredient.Name = ModifyNameInput.Text;
-            ingredient.Description = ModifyDescriptionInput.Text;
-            await _ingredientService.Update(ingredient);
+            selectedIngredient.Name = ModifyNameInput.Text;
+            selectedIngredient.Description = ModifyDescriptionInput.Text;
+            await _ingredientService.Update(selectedIngredient);
+            allIngredients = await _ingredientService.Get();
+            IngDataGrid.ItemsSource = allIngredients;
             ModifyPopup.IsOpen = false;
         }
 

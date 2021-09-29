@@ -16,61 +16,102 @@ namespace ZetaClient.DataAccess.Abstract
     {
         public async Task<T> Get(string Id)
         {
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth:true, receiveData:true)
-                .GetAsync($"{ApiRequestHelper.GetEntityUrl(typeof(T))}{Id}");
-            if(!response.IsSuccessStatusCode)
+            try
             {
-                throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true, receiveData: true)
+                    .GetAsync($"{ApiRequestHelper.GetEntityUrl(typeof(T))}{Id}");
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                }
+                string responseContent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(responseContent);
             }
-            string responseContent = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(responseContent);
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public async Task<List<T>> Get()
         {
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true, receiveData: true).GetAsync(ApiRequestHelper.GetEntityUrl(typeof(T)));
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true, receiveData: true).GetAsync(ApiRequestHelper.GetEntityUrl(typeof(T)));
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                }
+                string responseContent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<T>>(responseContent);
             }
-            string responseContent = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<List<T>>(responseContent);
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public async Task Insert(T entity)
         {
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).PostAsJsonAsync(ApiRequestHelper.GetEntityUrl(typeof(T)), entity);
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).PostAsJsonAsync(ApiRequestHelper.GetEntityUrl(typeof(T)), entity);
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                }
+            } catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
 
         public async Task Insert(List<T> entities)
         {
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).PostAsJsonAsync(ApiRequestHelper.GetEntityUrl(typeof(T)), entities);
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).PostAsJsonAsync(ApiRequestHelper.GetEntityUrl(typeof(T)), entities);
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
 
         public async Task Update(T entity)
         {
-            // add boolean "many" parameter to target another PUT controller
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).PutAsJsonAsync($"{ApiRequestHelper.GetEntityUrl(typeof(T))}true/", entity);
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                // add boolean "many" parameter to target another PUT controller
+                HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).PutAsJsonAsync($"{ApiRequestHelper.GetEntityUrl(typeof(T))}{entity.Id}", entity);
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
 
         public async Task Delete(string id)
         {
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).DeleteAsync($"{ApiRequestHelper.GetEntityUrl(typeof(T))}{id}");
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).DeleteAsync($"{ApiRequestHelper.GetEntityUrl(typeof(T))}{id}");
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
     }

@@ -18,6 +18,8 @@ namespace ZetaClient.pages
         private readonly FrisbeeModelService _frisbeeModelService;
         private readonly IngredientService _ingredientService;
         private List<FrisbeeModel> allModels;
+        private FrisbeeModel selectedModel;
+
         public ModelsPage()
         {
             // todo: check user department
@@ -40,11 +42,14 @@ namespace ZetaClient.pages
             FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
 
             await _frisbeeModelService.Delete(model.Id);
+            allModels = await _frisbeeModelService.Get();
+            ModelDataGrid.ItemsSource = allModels;
         }
 
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
             FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
+            selectedModel = model;
             ModifyNameInput.Text = model.Name;
             ModifyDescriptionInput.Text = model.Description;
             ModifypUHTInput.Text = model.pUHT;
@@ -66,6 +71,9 @@ namespace ZetaClient.pages
                     pUHT = pUHTInput.Text,
                     Range = (RangeType)RangeInput.SelectedItem
                 }, (List<Ingredient>)IngredientsListBox.SelectedItems);
+
+                allModels = await _frisbeeModelService.Get();
+                ModelDataGrid.ItemsSource = allModels;
             }
         }
 
@@ -89,12 +97,13 @@ namespace ZetaClient.pages
 
         private async void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
         {
-            FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
-            model.Name = NameInput.Text;
-            model.Description = DescriptionInput.Text;
-            model.pUHT = pUHTInput.Text;
-            model.Range = (RangeType)RangeInput.SelectedItem;
-            await _frisbeeModelService.Update(model);
+            selectedModel.Name = NameInput.Text;
+            selectedModel.Description = DescriptionInput.Text;
+            selectedModel.pUHT = pUHTInput.Text;
+            selectedModel.Range = (RangeType)RangeInput.SelectedItem;
+            await _frisbeeModelService.Update(selectedModel);
+            allModels = await _frisbeeModelService.Get();
+            ModelDataGrid.ItemsSource = allModels;
             ModifyPopup.IsOpen = false;
         }
 

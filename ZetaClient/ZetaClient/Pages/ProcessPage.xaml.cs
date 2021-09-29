@@ -26,6 +26,7 @@ namespace ZetaClient.pages
         private readonly ProcessService _processService;
         public List<FrisbeeModel> AllFrisbeeModel;
         private List<Process> allProcess;
+        private Process selectedProcess;
 
         public ProcessPage()
         {
@@ -48,6 +49,7 @@ namespace ZetaClient.pages
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
             Process process = ((FrameworkElement)sender).DataContext as Process;
+            selectedProcess = process;
             ModifyNameInput.Text = process.Name;
             ModifyDescriptionInput.Text = process.Description;
             ModifyStepDescriptionInput.Text = process.StepDescription;
@@ -60,6 +62,8 @@ namespace ZetaClient.pages
         {
             Process process = ((FrameworkElement)sender).DataContext as Process;
             await _processService.Delete(process.Id);
+            allProcess = await _processService.Get();
+            ProcessDataGrid.ItemsSource = allProcess;
         }
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
@@ -71,16 +75,19 @@ namespace ZetaClient.pages
                 StepDescription = StepDescriptionInput.Text,
                 FrisbeeModel = (FrisbeeModel)ModelInput.SelectedItem
             });
+            allProcess = await _processService.Get();
+            ProcessDataGrid.ItemsSource = allProcess;
         }
 
         private async void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
         {
-            Process process = ((FrameworkElement)sender).DataContext as Process;
-            process.Name = ModifyNameInput.Text;
-            process.Description = ModifyDescriptionInput.Text;
-            process.StepDescription = ModifyStepDescriptionInput.Text;
-            process.FrisbeeModel = (FrisbeeModel)ModifyModelInput.SelectedItem;
-            await _processService.Update(process);
+            selectedProcess.Name = ModifyNameInput.Text;
+            selectedProcess.Description = ModifyDescriptionInput.Text;
+            selectedProcess.StepDescription = ModifyStepDescriptionInput.Text;
+            selectedProcess.FrisbeeModel = (FrisbeeModel)ModifyModelInput.SelectedItem;
+            await _processService.Update(selectedProcess);
+            allProcess = await _processService.Get();
+            ProcessDataGrid.ItemsSource = allProcess;
             ModifyPopup.IsOpen = false;
         }
 
