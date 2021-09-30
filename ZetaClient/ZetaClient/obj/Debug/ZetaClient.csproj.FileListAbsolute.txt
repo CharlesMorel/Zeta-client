@@ -31,7 +31,6 @@ C:\Users\Charles\source\repos\CharlesMorel\Zeta-client\ZetaClient\ZetaClient\obj
 C:\Users\Charles\source\repos\CharlesMorel\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.exe
 C:\Users\Charles\source\repos\CharlesMorel\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.pdb
 C:\Users\Charles\Source\Repos\CharlesMorel\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.csproj.AssemblyReference.cache
-C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.csproj.AssemblyReference.cache
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\ZetaClient.exe.config
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\LoginWindow.g.cs
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Debug\MainWindow.g.cs
