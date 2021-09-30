@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ZetaClient.Constants.AppConstants">
+    <Position X="20.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAIAAAAAAgA=</HashCode>
+      <FileName>Constants\AppConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.DataAccess.Abstract.AbstractApiDao&lt;T&gt;">
+    <Position X="7.25" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\Abstract\AbstractApiDao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ZetaClient.DataAccess.FrisbeeModelApiDao">
+    <Position X="5.75" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\FrisbeeModelApiDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.DataAccess.IngredientApiDao">
+    <Position X="8.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\IngredientApiDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.DataAccess.ModelIngredientApiDao">
+    <Position X="11.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\ModelIngredientApiDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.DataAccess.ProcessApiDao">
+    <Position X="3" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\ProcessApiDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Entities.Abstract.AbstractEntity">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Abstract\AbstractEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ZetaClient.Entities.FrisbeeModel">
+    <Position X="10.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgCAAAAAACAAQAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\FrisbeeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Entities.Ingredient">
+    <Position X="3" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Ingredient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Entities.ModelIngredient">
+    <Position X="5.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAACAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\ModelIngredient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Entities.Process">
+    <Position X="8" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAEAABAAAAAAAAAAIA=</HashCode>
+      <FileName>Entities\Process.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Helpers.ApiRequestHelper">
+    <Position X="22" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\ApiRequestHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Managers.ConnectionManager">
+    <Position X="20.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\ConnectionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.pages.HomePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAACAAAAAgAAAAAAABAAABAAAAAAAAAA=</HashCode>
+      <FileName>Pages\HomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZetaClient.pages.IngredientsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAEACCAABAAAAAAACAAAAAgAIAAKAA=</HashCode>
+      <FileName>Pages\IngredientsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZetaClient.pages.ModelsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgQAAAAAEAAACCCAABJAACAQACAAAgAgAIAACAA=</HashCode>
+      <FileName>Pages\ModelsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZetaClient.pages.ProcessPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAQAACCgABAAAAgAACABAAAAAIAACAQ=</HashCode>
+      <FileName>Pages\ProcessPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZetaClient.Services.Abstract.AbstractService&lt;T&gt;">
+    <Position X="5.5" Y="10.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAABAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Abstract\AbstractService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Services.FrisbeeModelService">
+    <Position X="5.5" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\FrisbeeModelService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Services.IngredientService">
+    <Position X="8" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IngredientService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Services.ProcessService">
+    <Position X="3" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ProcessService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.Services.UserService">
+    <Position X="10.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.App" Collapsed="true">
+    <Position X="15.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZetaClient.LoginWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>LoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZetaClient.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ZetaClient.DataAccess.Abstract.IDao&lt;T&gt;">
+    <Position X="4.75" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\Abstract\IDao.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ZetaClient.Entities.Abstract.IEntity">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Abstract\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ZetaClient.Entities.Enums.RangeType">
+    <Position X="18.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Enums\RangeType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ZetaClient.Entities.Enums.UserDepartment">
+    <Position X="18.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAABAAAAAAAAAAAAAAAAAAAAACAEAAAA=</HashCode>
+      <FileName>Entities\Enums\UserDepartment.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

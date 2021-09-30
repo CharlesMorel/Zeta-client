@@ -4,16 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Navigation;
+using ZetaClient.Constants;
+using ZetaClient.Entities;
 using ZetaClient.pages;
+using ZetaClient.Services;
 
 namespace ZetaClient
 {
@@ -24,14 +18,25 @@ namespace ZetaClient
     {
         public MainWindow()
         {
+
             InitializeComponent();
 
             Loaded += MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            frame.NavigationService.Navigate(new HomePage());
+            // todo
+            AppConstants.BaseApiUrl = "http://172.16.5.30";
+            if (AppConstants.ApiKey == null)
+            {
+                LoginWindow login = new LoginWindow();
+                login.Show();
+                Close();
+            } else
+            {
+                frame.NavigationService.Navigate(new HomePage());
+            }
         }
     }
 }

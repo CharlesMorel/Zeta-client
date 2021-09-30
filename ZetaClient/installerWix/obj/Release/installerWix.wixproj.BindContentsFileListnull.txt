@@ -1,0 +1,5 @@
+Newtonsoft.Json.dll
+System.Net.Http.Extensions.dll
+System.Net.Http.Formatting.dll
+System.Net.Http.Primitives.dll
+C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\bin\Release\ZetaClient.exe

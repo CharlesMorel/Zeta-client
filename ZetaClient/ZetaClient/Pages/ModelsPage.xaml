@@ -1,12 +1,24 @@
 ﻿<Page x:Class="ZetaClient.pages.ModelsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZetaClient.pages"
-      mc:Ignorable="d" 
+      xmlns:enums="clr-namespace:ZetaClient.Entities.Enums"
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ModelsPage">
+      Title="ModelsPage"
+      Loaded="ModelPage_Loaded">
+
+    <Page.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                ObjectType="{x:Type enums:RangeType}"
+                x:Key="RangeTypeValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:RangeType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,6 +33,146 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.Column="1" HorizontalAlignment="Right">
+                <Label Grid.Column="1" Content="Rechercher" />
+                <TextBox x:Name="SearchTextBox" Grid.Column="1" HorizontalAlignment="Right" Width="160" Margin="10, 0" VerticalAlignment="Center" Padding="4" KeyUp="SearchTextBox_KeyUp" />
+            </DockPanel>
+
+            <Grid Grid.Column="0" Grid.Row="1" Width="250" Height="400" VerticalAlignment="Top" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Nom" />
+                <TextBox x:Name="NameInput" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+                <Label Grid.Row="1" Content="Description" />
+                <TextBox x:Name="DescriptionInput" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+                <Label Grid.Row="2" Content="pUHT" />
+                <TextBox x:Name="pUHTInput" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+                <Label Grid.Row="3" Content="Gamme" />
+                <ListBox x:Name="RangeInput" ItemsSource="{Binding Source={StaticResource RangeTypeValues}}" Height="80" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+
+                <Label Grid.Row="4" Content="Ingrédients" />
+                <ListBox Grid.Row="4" Grid.Column="1" Height="100" x:Name="IngredientsListBox" Margin="0,0,0,10" Padding="4">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <ListBoxItem IsSelected="{Binding IsChecked}">
+                                <CheckBox IsChecked="{Binding IsChecked}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Content="{Binding Path=Name}" />
+                            </ListBoxItem>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Button x:Name="AddButton" Grid.Row="5" Grid.Column="1" Padding="4" HorizontalAlignment="Right" Click="AddButton_Click">Ajouter</Button>
+            </Grid>
+
+            <DataGrid Grid.Row="1" Grid.Column="1" Name="ModelDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}" />
+                    <DataGridTextColumn Width="Auto" Header="pUHT" Binding="{Binding PUHT}" />
+                    <DataGridTextColumn Width="Auto" Header="Gamme" Binding="{Binding Range}" />
+                    <DataGridTemplateColumn Width="Auto" Header="Ingrédients">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Voir ingrédients" Click="SeeIngredients_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="Auto" Header="Modifier">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Modify" Click="Modify_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="Auto" Header="Supprimer">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Click="Remove_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Popup x:Name="IngredientsPopup" Placement="Center" Width="500" Height="350">
+                <Border BorderThickness="1">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="IngPopupTitle" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                        <Label Name="ClosePopupButton" Content="X" FontWeight="Bold" Margin="4" HorizontalAlignment="Right" Cursor="Hand" MouseDown="ClosePopupButton_MouseDown" />
+
+                        <DataGrid Grid.Row="1" Name="IngPopupDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Ingredient.Name}" />
+                                <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Ingredient.Description}" />
+                                <DataGridTextColumn Width="Auto" Header="Grammage" Binding="{Binding Grammage}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+            </Popup>
+
+            <Popup x:Name="ModifyPopup" Placement="Center" Width="400" Height="350">
+                <Border BorderThickness="1">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Modifier le modèle" />
+
+                        <Label Name="CloseModifyPopupButton" Content="X" FontWeight="Bold" Margin="4" HorizontalAlignment="Right" Cursor="Hand" MouseDown="CloseModifyPopupButton_MouseDown" />
+
+                        <Grid Grid.Row="1" Margin="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Nom" />
+                            <TextBox x:Name="ModifyNameInput" Grid.Column="1" VerticalAlignment="Center" />
+                            <Label Grid.Row="1" Content="Description" />
+                            <TextBox x:Name="ModifyDescriptionInput" Grid.Row="1" Grid.Column="1" />
+                            <Label Grid.Row="2" Content="uPHT" />
+                            <TextBox x:Name="ModifypUHTInput" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+                            <Label Grid.Row="3" Content="Gamme" />
+                            <ListBox x:Name="ModifyRangeInput" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Source={StaticResource RangeTypeValues}}" Height="80" Margin="0,0,0,10" Padding="4" />
+                            <Button x:Name="ModifyValidationButton" Margin="0,10,0,0" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Padding="8, 4" Click="ModifyValidationButton_Click">Modifier</Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Popup>
         </Grid>
     </Grid>
 </Page>

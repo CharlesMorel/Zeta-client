@@ -1,0 +1,2 @@
+C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\installerWix\bin\Release\installerWix.msi
+C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\installerWix\bin\Release\installerWix.wixpdb

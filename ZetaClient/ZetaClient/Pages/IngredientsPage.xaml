@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IngredientsPage"
-      Loaded="Page_Loaded">
+      Loaded="IngredientsPage_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,11 +17,94 @@
 
         <TextBlock Grid.Row="0" Text="Ingrédients" HorizontalAlignment="Center" FontSize="18" />
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.Column="1" HorizontalAlignment="Right">
+                <Label Grid.Column="1" Content="Rechercher" />
+                <TextBox x:Name="SearchTextBox" Grid.Column="1" HorizontalAlignment="Right" Width="160" Margin="10, 0" VerticalAlignment="Center" Padding="4" KeyUp="SearchTextBox_KeyUp" />
+            </DockPanel>
+
+            <Grid Grid.Row="1" Grid.Column="0" Width="250" Height="250" VerticalAlignment="Top" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Nom" />
+                <TextBox x:Name="NameInput" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+                <Label Grid.Row="1" Content="Description" />
+                <TextBox x:Name="DescriptionInput" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Padding="4" />
+                <Button x:Name="AddButton" Grid.Row="2" Grid.Column="1" Padding="4" HorizontalAlignment="Right" Click="AddButton_Click">Ajouter</Button>
+            </Grid>
+
+            <DataGrid Grid.Row="1" Grid.Column="1" Name="IngDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}" />
+                    <DataGridTemplateColumn Width="Auto" Header="Modifier">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Modify" Click="Modify_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="Auto" Header="Supprimer">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Click="Remove_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Popup x:Name="ModifyPopup" Placement="Center" Width="400" Height="350">
+                <Border BorderThickness="1">
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Modifier le Processus" />
+
+                        <Label Name="CloseModifyPopupButton" Content="X" FontWeight="Bold" Margin="4" HorizontalAlignment="Right" Cursor="Hand" MouseDown="CloseModifyPopupButton_MouseDown" />
+
+                        <Grid Grid.Row="1" Margin="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Nom" />
+                            <TextBox x:Name="ModifyNameInput" Grid.Column="1" VerticalAlignment="Center" />
+                            <Label Grid.Row="1" Content="Description" />
+                            <TextBox x:Name="ModifyDescriptionInput" Grid.Row="1" Grid.Column="1" />
+                            <Button x:Name="ModifyValidationButton" Margin="0,10,0,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Padding="8, 4" Click="ModifyValidationButton_Click">Modifier</Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Popup>
         </Grid>
     </Grid>
 </Page>

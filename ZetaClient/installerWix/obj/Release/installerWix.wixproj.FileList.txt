@@ -1,0 +1,6 @@
+C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\installerWix\bin\Release\installerWix.msi
+C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\installerWix\bin\Release\installerWix.wixpdb
+obj\Release\Product.wixobj
+obj\Release\installerWix.wixproj.BindContentsFileListnull.txt
+obj\Release\installerWix.wixproj.BindOutputsFileListnull.txt
+obj\Release\installerWix.wixproj.BindBuiltOutputsFileListnull.txt

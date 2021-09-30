@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="*" Name="installerWix" Language="1033" Version="1.0.0.0" Manufacturer="Zeta" UpgradeCode="c5bbec07-ce65-4046-9878-ad55f4ddd438">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+		<!--<PropertyRef Id="WIX_IS_NETFRAMEWORK_472_OR_LATER_INSTALLED"/>
+		<Condition Message=".NET Framework 4.6.2 or later not found. Install the .NET Framework and try again.">
+			<![CDATA[INSTALLED OR WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED]]>
+		</Condition>-->
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes"/>
+
+		<Feature Id="ProductFeature" Title="installerWix" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+<Fragment>
+  <DirectoryRef Id="ApplicationProgramsFolder">
+    <Component Id="ApplicationShortcut" Guid="ab43392d-d93c-4e0f-b2b0-652112a557f3">
+      <Shortcut Id="ApplicationStartMenuShortcut"
+                Name="ZetaClient"
+                Description="Application de gestion Killer-Bee."
+                Target="[#ZetaClient.exe]"
+                WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+      <RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall"/>
+      <RegistryValue Root="HKCU" Key="Software\Killer-Bee\ZetaClient" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+    </Component>
+  </DirectoryRef>
+</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="ProductComponent">
+        <File Source="$(var.ZetaClient.TargetPath)" />
+      </Component>
+      <Component Id="newtonsoft.dll" Guid="d4f5f8ad-af75-45e0-937d-ae3dcbc6a020">
+        <File Id="Newtonsoft.Json.dll" Source="Newtonsoft.Json.dll" KeyPath="yes" Checksum="yes"/>
+      </Component>
+      <Component Id="Http.Extensions.dll" Guid="694fb562-84ca-4838-a9ac-a2d88dded668">
+        <File Id="System.Net.Http.Extensions.dll" Source="System.Net.Http.Extensions.dll" KeyPath="yes" Checksum="yes"/>
+      </Component>
+      <Component Id="formatting.dll" Guid="20a5e8cd-2606-4830-811b-1e2e2de2215c">
+        <File Id="System.Net.Http.Formatting.dll" Source="System.Net.Http.Formatting.dll" KeyPath="yes" Checksum="yes"/>
+      </Component>
+      <Component Id="primitives.dll" Guid="f6de3990-cb42-4c49-825d-78763a27474b">
+        <File Id="System.Net.Http.Primitives.dll" Source="System.Net.Http.Primitives.dll" KeyPath="yes" Checksum="yes"/>
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
