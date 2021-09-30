@@ -211,7 +211,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="assets\img\processIcon.png" />
+    <Resource Include="assets\img\process.png" />
+    <Resource Include="assets\img\ingredient.png" />
+    <Resource Include="assets\img\model.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

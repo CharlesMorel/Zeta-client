@@ -25,9 +25,24 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" x:Name="Process" Padding="8, 4" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Process_Click">Processus</Button>
-            <Button Grid.Column="1" x:Name="Models" Padding="8, 4" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Models_Click">Modèles</Button>
-            <Button Grid.Column="2" x:Name="Ingredients" Padding="8, 4" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Ingredients_Click">Ingrédients</Button>
+            <Button Grid.Column="0" x:Name="Process" Padding="8, 4" Cursor="Hand" Background="White" BorderBrush="Transparent" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Process_Click">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="/assets/img/process.png" Height="30" Margin="10" />
+                    <TextBlock Text="Processus" />
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" x:Name="Models" Padding="8, 4" Cursor="Hand" Background="White" BorderBrush="Transparent" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Models_Click">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="/assets/img/model.png" Height="30" Margin="10" />
+                    <TextBlock Text="Modèles" />
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2" x:Name="Ingredients" Padding="8, 4" Cursor="Hand" Background="White" BorderBrush="Transparent" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Ingredients_Click">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="/assets/img/ingredient.png" Height="30" Margin="10" />
+                    <TextBlock Text="Ingrédients" />
+                </StackPanel>
+            </Button>
         </Grid>
     </Grid>
 </Page>

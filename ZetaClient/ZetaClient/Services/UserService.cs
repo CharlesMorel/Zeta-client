@@ -18,7 +18,7 @@ namespace ZetaClient.Services
         {
             Dictionary<string, object> logResult = await ConnectionManager.LogUserIn(username, password);
 
-            if(logResult["Error"] != null)
+            if(logResult.ContainsKey("Error"))
             {
                 throw new Exception(logResult["Error"].ToString());
             }
