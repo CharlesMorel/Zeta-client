@@ -41,8 +41,8 @@ namespace ZetaClient.pages
         private async void ProcessPage_Loaded(object sender, EventArgs e)
         {
             allProcess = await _processService.Get();
-            //AllFrisbeeModel = await _frisbeeModelService.Get();
-            //ModelInput.ItemsSource = AllFrisbeeModel;
+            AllFrisbeeModel = await _frisbeeModelService.Get();
+            ModelInput.ItemsSource = AllFrisbeeModel;
             ProcessDataGrid.ItemsSource = allProcess;
         }
 
@@ -54,7 +54,7 @@ namespace ZetaClient.pages
             ModifyDescriptionInput.Text = process.Description;
             ModifyStepDescriptionInput.Text = process.StepDescription;
             ModifyModelInput.ItemsSource = AllFrisbeeModel;
-            ModifyModelInput.SelectedItem = process.FrisbeeModel;
+            ModifyModelInput.SelectedItem = process.Frisbee;
             ModifyPopup.IsOpen = true;
         }
 
@@ -73,7 +73,7 @@ namespace ZetaClient.pages
                 Name = NameInput.Text,
                 Description = DescriptionInput.Text,
                 StepDescription = StepDescriptionInput.Text,
-                FrisbeeModel = (FrisbeeModel)ModelInput.SelectedItem
+                FrisbeeId = ((FrisbeeModel)ModelInput.SelectedItem).Id
             });
             allProcess = await _processService.Get();
             ProcessDataGrid.ItemsSource = allProcess;
@@ -84,7 +84,7 @@ namespace ZetaClient.pages
             selectedProcess.Name = ModifyNameInput.Text;
             selectedProcess.Description = ModifyDescriptionInput.Text;
             selectedProcess.StepDescription = ModifyStepDescriptionInput.Text;
-            selectedProcess.FrisbeeModel = (FrisbeeModel)ModifyModelInput.SelectedItem;
+            selectedProcess.FrisbeeId = ((FrisbeeModel)ModifyModelInput.SelectedItem).Id;
             await _processService.Update(selectedProcess);
             allProcess = await _processService.Get();
             ProcessDataGrid.ItemsSource = allProcess;
@@ -103,7 +103,7 @@ namespace ZetaClient.pages
                 process.Name.Contains(search) || 
                 process.Description.Contains(search) || 
                 process.StepDescription.Contains(search) || 
-                process.FrisbeeModel.Name.Contains(search));
+                process.Frisbee.Name.Contains(search));
 
             ProcessDataGrid.ItemsSource = filtered;
         }

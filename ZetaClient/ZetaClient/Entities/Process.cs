@@ -12,6 +12,7 @@ namespace ZetaClient.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string StepDescription { get; set; }
-        public FrisbeeModel FrisbeeModel { get; set; }
+        public FrisbeeModel Frisbee { get; set; }
+        public string FrisbeeId { get; set; }
     }
 }
