@@ -27,7 +27,7 @@ namespace ZetaClient
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // todo
-            AppConstants.BaseApiUrl = "http://localhost";
+            AppConstants.BaseApiUrl = "http://172.16.5.30";
             if (AppConstants.ApiKey == null)
             {
                 LoginWindow login = new LoginWindow();
