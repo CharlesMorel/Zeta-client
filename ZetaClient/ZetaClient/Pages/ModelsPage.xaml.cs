@@ -20,6 +20,7 @@ namespace ZetaClient.pages
         private readonly IngredientService _ingredientService;
         private List<FrisbeeModel> allModels;
         private FrisbeeModel selectedModel;
+        private List<Ingredient> selectedIngredients;
 
         public ModelsPage()
         {
@@ -122,6 +123,18 @@ namespace ZetaClient.pages
                 model.Range.ToString().Contains(search));
 
             ModelDataGrid.ItemsSource = filtered;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Ingredient ing = ((FrameworkElement)sender).DataContext as Ingredient;
+            selectedIngredients.Add(ing);
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Ingredient ing = ((FrameworkElement)sender).DataContext as Ingredient;
+            selectedIngredients.Remove(ing);
         }
     }
 }

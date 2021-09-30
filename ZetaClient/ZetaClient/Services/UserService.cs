@@ -17,6 +17,12 @@ namespace ZetaClient.Services
         public async Task Login(string username, string password)
         {
             Dictionary<string, object> logResult = await ConnectionManager.LogUserIn(username, password);
+
+            if(logResult["Error"] != null)
+            {
+                throw new Exception(logResult["Error"].ToString());
+            }
+
             AppConstants.ApiKey = logResult["ApiKey"] as string;
             // todo
             AppConstants.CurrentUserDepartment = UserDepartment.RD;
@@ -24,8 +30,9 @@ namespace ZetaClient.Services
 
         public async Task Logout()
         {
-            await ConnectionManager.LogOut();
+            //await ConnectionManager.LogOut();
             AppConstants.CurrentUserDepartment = UserDepartment.None;
+            AppConstants.ApiKey = null;
         }
     }
 }

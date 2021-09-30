@@ -30,6 +30,7 @@ namespace ZetaClient
 
         private async void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
+            ConnectButton.IsEnabled = false;
             string email = EmailInput.Text;
             string password = PasswordInput.Password;
             if (email.Length > 0 && password.Length > 0)
@@ -37,18 +38,20 @@ namespace ZetaClient
                 try
                 {
                     await _userService.Login(email, password);
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                    Close();
                 }
                 catch (Exception ex)
                 {
                     AlertLabel.Text = ex.Message;
+                    ConnectButton.IsEnabled = true;
                 }
-                MainWindow main = new MainWindow();
-                main.Show();
-                Close();
             }
             else
             {
                 AlertLabel.Text = "Veuillez compléter les champs ci-dessus.";
+                ConnectButton.IsEnabled = true;
             }
         }
     }

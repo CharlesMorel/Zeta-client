@@ -20,9 +20,11 @@ namespace ZetaClient.Managers
                 Password = password
             });
 
+            var result = JsonConvert.DeserializeObject<Dictionary<string, object>>(await response.Content.ReadAsStringAsync());
+
             return !response.IsSuccessStatusCode
-                ? throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}")
-                : JsonConvert.DeserializeObject<Dictionary<string, object>>(await response.Content.ReadAsStringAsync());
+                ? throw new Exception(result["Error"].ToString())
+                : result;
         }
 
         public async static Task LogOut()
