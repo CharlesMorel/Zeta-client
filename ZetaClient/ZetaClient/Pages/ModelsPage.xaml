@@ -85,7 +85,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Name}" />
                     <DataGridTextColumn Width="*" Header="Description" Binding="{Binding Description}" />
-                    <DataGridTextColumn Width="Auto" Header="pUHT" Binding="{Binding pUHT}" />
+                    <DataGridTextColumn Width="Auto" Header="pUHT" Binding="{Binding PUHT}" />
                     <DataGridTextColumn Width="Auto" Header="Gamme" Binding="{Binding Range}" />
                     <DataGridTemplateColumn Width="Auto" Header="Ingrédients">
                         <DataGridTemplateColumn.CellTemplate>

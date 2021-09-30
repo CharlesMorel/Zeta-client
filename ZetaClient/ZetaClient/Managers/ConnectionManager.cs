@@ -14,7 +14,7 @@ namespace ZetaClient.Managers
     {
         public async static Task<Dictionary<string, object>> LogUserIn(string username, string password)
         {
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(receiveData: true).PostAsJsonAsync($"{AppConstants.BaseApiUrl}auth/", new
+            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(receiveData: true).PostAsJsonAsync($"{AppConstants.BaseApiUrl}:8000/auth/", new
             {
                 Username = username,
                 Password = password
@@ -27,7 +27,7 @@ namespace ZetaClient.Managers
 
         public async static Task LogOut()
         {
-            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).GetAsync($"{AppConstants.BaseApiUrl}auth/");
+            HttpResponseMessage response = await ApiRequestHelper.GetHttpClient(requireAuth: true).GetAsync($"{AppConstants.BaseApiUrl}:8000/auth/");
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception($"La requête n'a pas abouti (code : {response.StatusCode}");

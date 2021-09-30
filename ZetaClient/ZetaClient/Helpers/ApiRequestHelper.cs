@@ -16,19 +16,19 @@ namespace ZetaClient.Helpers
         {
             if (type == typeof(FrisbeeModel))
             {
-                return $"{AppConstants.BaseApiUrl}models/";
+                return $"{AppConstants.BaseApiUrl}:8001/frisbees/";
             }
             if (type == typeof(Ingredient))
             {
-                return $"{AppConstants.BaseApiUrl}ingredients/";
+                return $"{AppConstants.BaseApiUrl}:8002/ingredients/";
             }
             if (type == typeof(ModelIngredient))
             {
-                return $"{AppConstants.BaseApiUrl}modelingredients/";
+                return $"{AppConstants.BaseApiUrl}:8001/frisbee_ingredients/";
             }
             if (type == typeof(Process))
             {
-                return $"{AppConstants.BaseApiUrl}process/";
+                return $"{AppConstants.BaseApiUrl}:8000/process/";
             }
 
             return AppConstants.BaseApiUrl;

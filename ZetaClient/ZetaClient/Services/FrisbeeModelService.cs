@@ -27,22 +27,22 @@ namespace ZetaClient.Services
                 modelIngredients.Add(new ModelIngredient()
                 {
                     Ingredient = ingredient,
-                    FrisbeeModel = entity
+                    Frisbee = entity
                 });
             });
             await _modelIngredientDao.Insert(modelIngredients);
         }
 
-        public async Task<List<Ingredient>> GetIngredientByModel(string id)
-        {
-            List<ModelIngredient> allModelIngredients = await _modelIngredientDao.Get();
-            List<ModelIngredient> modelIngredients = allModelIngredients.Where(modelIngredient => modelIngredient.FrisbeeModel.Id == id).ToList();
-            List<Ingredient> ingredients = new List<Ingredient>();
-            modelIngredients.ForEach(modelIngredient =>
-            {
-                ingredients.Add(modelIngredient.Ingredient);
-            });
-            return ingredients;
-        }
+        //public async Task<List<Ingredient>> GetIngredientByModel(string id)
+        //{
+        //    List<ModelIngredient> allModelIngredients = await _modelIngredientDao.Get();
+        //    List<ModelIngredient> modelIngredients = allModelIngredients.Where(modelIngredient => modelIngredient.FrisbeeModel.Id == id).ToList();
+        //    List<Ingredient> ingredients = new List<Ingredient>();
+        //    modelIngredients.ForEach(modelIngredient =>
+        //    {
+        //        ingredients.Add(modelIngredient.Ingredient);
+        //    });
+        //    return ingredients;
+        //}
     }
 }

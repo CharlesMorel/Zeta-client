@@ -12,7 +12,8 @@ namespace ZetaClient.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string pUHT { get; set; }
+        public string PUHT { get; set; }
         public RangeType Range { get; set; }
+        public List<ModelIngredient> ListIngredients { get; set; }
     }
 }

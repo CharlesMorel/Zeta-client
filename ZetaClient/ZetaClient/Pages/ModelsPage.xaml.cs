@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,6 +34,10 @@ namespace ZetaClient.pages
         private async void ModelPage_Loaded(object sender, EventArgs e)
         {
             allModels = await _frisbeeModelService.Get();
+            allModels[0].ListIngredients.ForEach(ing =>
+            {
+                var test = ing;
+            });
             ModelDataGrid.ItemsSource = allModels;
             IngredientsListBox.ItemsSource = await _ingredientService.Get();
         }
@@ -52,7 +57,7 @@ namespace ZetaClient.pages
             selectedModel = model;
             ModifyNameInput.Text = model.Name;
             ModifyDescriptionInput.Text = model.Description;
-            ModifypUHTInput.Text = model.pUHT;
+            ModifypUHTInput.Text = model.PUHT;
             ModifyRangeInput.SelectedItem = model.Range;
             ModifyPopup.IsOpen = true;
         }
@@ -62,13 +67,13 @@ namespace ZetaClient.pages
             if (NameInput.Text.Length > 0 &&
                 DescriptionInput.Text.Length > 0 &&
                 pUHTInput.Text.Length > 0 &&
-                IngredientsListBox.SelectedItems.Count > 0)
+                IngredientsListBox.SelectedItem != null)
             {
                 await _frisbeeModelService.Create(new FrisbeeModel()
                 {
                     Name = NameInput.Text,
                     Description = DescriptionInput.Text,
-                    pUHT = pUHTInput.Text,
+                    PUHT = pUHTInput.Text,
                     Range = (RangeType)RangeInput.SelectedItem
                 }, (List<Ingredient>)IngredientsListBox.SelectedItems);
 
@@ -77,11 +82,11 @@ namespace ZetaClient.pages
             }
         }
 
-        private async void SeeIngredients_Click(object sender, RoutedEventArgs e)
+        private void SeeIngredients_Click(object sender, RoutedEventArgs e)
         {
             FrisbeeModel model = ((FrameworkElement)sender).DataContext as FrisbeeModel;
             IngPopupTitle.Content = $"Ingrédients du frisbee {model.Name}";
-            IngPopupDataGrid.ItemsSource = await _frisbeeModelService.GetIngredientByModel(model.Id);
+            IngPopupDataGrid.ItemsSource = model.ListIngredients;
             IngredientsPopup.IsOpen = true;
         }
 
@@ -97,10 +102,10 @@ namespace ZetaClient.pages
 
         private async void ModifyValidationButton_Click(object sender, RoutedEventArgs e)
         {
-            selectedModel.Name = NameInput.Text;
-            selectedModel.Description = DescriptionInput.Text;
-            selectedModel.pUHT = pUHTInput.Text;
-            selectedModel.Range = (RangeType)RangeInput.SelectedItem;
+            selectedModel.Name = ModifyNameInput.Text;
+            selectedModel.Description = ModifyDescriptionInput.Text;
+            selectedModel.PUHT = ModifypUHTInput.Text;
+            selectedModel.Range = (RangeType)ModifyRangeInput.SelectedItem;
             await _frisbeeModelService.Update(selectedModel);
             allModels = await _frisbeeModelService.Get();
             ModelDataGrid.ItemsSource = allModels;
@@ -113,7 +118,7 @@ namespace ZetaClient.pages
             var filtered = allModels.Where(model => 
                 model.Name.Contains(search) || 
                 model.Description.Contains(search) || 
-                model.pUHT.Contains(search) || 
+                model.PUHT.Contains(search) || 
                 model.Range.ToString().Contains(search));
 
             ModelDataGrid.ItemsSource = filtered;
