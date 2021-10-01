@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZetaClient", "ZetaClient\ZetaClient.csproj", "{A9E32AE5-78B7-41CF-BFA5-78DB477D4E7D}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ZetaInstaller", "ZetaInstaller\ZetaInstaller.vdproj", "{4ED9B054-93D0-4806-8C8B-700246AD1938}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstallerWithCert", "InstallerWithCert\InstallerWithCert.vdproj", "{20923259-D001-4B5D-873D-85DEDE786BBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,11 +23,11 @@ Global
 		{A9E32AE5-78B7-41CF-BFA5-78DB477D4E7D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9E32AE5-78B7-41CF-BFA5-78DB477D4E7D}.Release|x86.ActiveCfg = Release|Any CPU
 		{A9E32AE5-78B7-41CF-BFA5-78DB477D4E7D}.Release|x86.Build.0 = Release|Any CPU
-		{4ED9B054-93D0-4806-8C8B-700246AD1938}.Debug|Any CPU.ActiveCfg = Release
-		{4ED9B054-93D0-4806-8C8B-700246AD1938}.Debug|Any CPU.Build.0 = Release
-		{4ED9B054-93D0-4806-8C8B-700246AD1938}.Debug|x86.ActiveCfg = Debug
-		{4ED9B054-93D0-4806-8C8B-700246AD1938}.Release|Any CPU.ActiveCfg = Release
-		{4ED9B054-93D0-4806-8C8B-700246AD1938}.Release|x86.ActiveCfg = Release
+		{20923259-D001-4B5D-873D-85DEDE786BBA}.Debug|Any CPU.ActiveCfg = Debug
+		{20923259-D001-4B5D-873D-85DEDE786BBA}.Debug|x86.ActiveCfg = Debug
+		{20923259-D001-4B5D-873D-85DEDE786BBA}.Release|Any CPU.ActiveCfg = Release
+		{20923259-D001-4B5D-873D-85DEDE786BBA}.Release|Any CPU.Build.0 = Release
+		{20923259-D001-4B5D-873D-85DEDE786BBA}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

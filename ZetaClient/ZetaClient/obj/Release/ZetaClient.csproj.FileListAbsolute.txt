@@ -30,4 +30,3 @@ C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Release\ZetaCl
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Release\ZetaClient.csproj.CopyComplete
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Release\ZetaClient.exe
 C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Release\ZetaClient.pdb
-C:\Users\cmo99\source\repos\Zeta-client\ZetaClient\ZetaClient\obj\Release\ZetaClient.csproj.AssemblyReference.cache

@@ -20,7 +20,7 @@ namespace ZetaClient.Helpers
             }
             if (type == typeof(Ingredient))
             {
-                return $"{AppConstants.BaseApiUrl}:8002/ingredients/";
+                return $"{AppConstants.BaseApiUrl}:8001/ingredients/";
             }
             if (type == typeof(ModelIngredient))
             {
@@ -28,7 +28,7 @@ namespace ZetaClient.Helpers
             }
             if (type == typeof(Process))
             {
-                return $"{AppConstants.BaseApiUrl}:8001/process/";
+                return $"{AppConstants.BaseApiUrl}:8002/process/";
             }
 
             return AppConstants.BaseApiUrl;
